@@ -15,16 +15,16 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t mousumijenkinstest:latest .' 
+                sh 'docker build -t babaijenkinstest:latest .' 
                
-                sh 'docker tag mousumijenkinstest bibhu1234567890/mousumijenkinstest:$BUILD_NUMBER'
+                sh 'docker tag babaijenkinstest bibhu1234567890/babaijenkinstest:$BUILD_NUMBER'
                
           }
         }
   stage('Publish image to Docker Hub') {
             steps {
         withDockerRegistry([ credentialsId: "DockerHub", url: "" ]) {
-           sh  'docker push bibhu1234567890/mousumijenkinstest:$BUILD_NUMBER' 
+           sh  'docker push bibhu1234567890/babaijenkinstest:$BUILD_NUMBER' 
 		}
                   
           }
