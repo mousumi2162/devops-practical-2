@@ -15,16 +15,16 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t LIPAjenkinstest:latest .' 
+                sh 'docker build -t lipajenkinstest:latest .' 
                
-                sh 'docker tag LIPAjenkinstest bibhu1234567890/LIPAjenkinstest:$BUILD_NUMBER'
+                sh 'docker tag lipajenkinstest bibhu1234567890/lipajenkinstest:$BUILD_NUMBER'
                
           }
         }
   stage('Publish image to Docker Hub') {
             steps {
         withDockerRegistry([ credentialsId: "DockerHub", url: "" ]) {
-           sh  'docker push bibhu1234567890/LIPAjenkinstest:$BUILD_NUMBER'
+           sh  'docker push bibhu1234567890/lipajenkinstest:$BUILD_NUMBER'
 	   sh  'pwd'	
 		}
                   
